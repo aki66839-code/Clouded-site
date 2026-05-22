@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sab News - हिंदी समाचार वेबसाइट</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">📰 Sab News</div>
+            <div class="nav-links">
+                <a href="index.html" class="active">होम</a>
+                <a href="politics.html">राजनीति</a>
+                <a href="business.html">व्यापार</a>
+                <a href="sports.html">खेल</a>
+                <a href="entertainment.html">मनोरंजन</a>
+                <a href="science.html">विज्ञान</a>
+                <a href="health.html">स्वास्थ्य</a>
+                <a href="india.html">भारत</a>
+                <a href="world.html">दुनिया</a>
+            </div>
+            <div class="nav-right">
+                <input type="text" placeholder="खोजें..." class="search-box" id="searchBox">
+                <button class="btn-theme" onclick="toggleTheme()">🌙</button>
+                <a href="admin.html" class="btn-admin">एडमिन</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breaking News -->
+    <div class="breaking-news">
+        <span class="breaking-label">🔴 LIVE</span>
+        <marquee>यह आपकी सबसे तेज़ और सबसे विश्वसनीय हिंदी समाचार वेबसाइट है! | लेटेस्ट अपडेट्स के लिए हमें फॉलो करें!</marquee>
+    </div>
+
+    <!-- Hero Section with Featured News -->
+    <section class="hero">
+        <div class="featured-news" id="featuredNews">
+            <img src="https://via.placeholder.com/800x400?text=फीचर्ड+समाचार" alt="Featured">
+            <div class="featured-content">
+                <span class="category-badge">🔥 ट्रेंडिंग</span>
+                <h1>भारत में नई प्रौद्योगिकी क्रांति शुरू हुई</h1>
+                <p>देश भर में तकनीकी विकास के नए आयाम खुल रहे हैं...</p>
+                <a href="article.html" class="read-more">पूरा पढ़ें →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Trending Section -->
+        <section class="trending-section">
+            <h2>🔥 ट्रेंडिंग अभी</h2>
+            <div class="news-grid" id="trendingNews">
+                <!-- JavaScript से load होगा -->
+            </div>
+        </section>
+
+        <!-- Latest News -->
+        <section class="latest-section">
+            <h2>📰 लेटेस्ट समाचार</h2>
+            <div class="news-grid" id="latestNews">
+                <!-- JavaScript से load होगा -->
+            </div>
+        </section>
+
+        <!-- Categories -->
+        <section class="categories-section">
+            <h2>📚 सभी श्रेणियां</h2>
+            <div class="categories-grid">
+                <a href="politics.html" class="category-card">
+                    <span class="icon">🏛️</span>
+                    <span>राजनीति</span>
+                </a>
+                <a href="business.html" class="category-card">
+                    <span class="icon">💼</span>
+                    <span>व्यापार</span>
+                </a>
+                <a href="sports.html" class="category-card">
+                    <span class="icon">⚽</span>
+                    <span>खेल</span>
+                </a>
+                <a href="entertainment.html" class="category-card">
+                    <span class="icon">🎬</span>
+                    <span>मनोरंजन</span>
+                </a>
+                <a href="science.html" class="category-card">
+                    <span class="icon">🔬</span>
+                    <span>विज्ञान</span>
+                </a>
+                <a href="health.html" class="category-card">
+                    <span class="icon">⚕️</span>
+                    <span>स्वास्थ्य</span>
+                </a>
+                <a href="india.html" class="category-card">
+                    <span class="icon">🇮🇳</span>
+                    <span>भारत</span>
+                </a>
+                <a href="world.html" class="category-card">
+                    <span class="icon">🌍</span>
+                    <span>दुनिया</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Newsletter -->
+        <section class="newsletter-section">
+            <h2>📧 न्यूज़लेटर सदस्य बनें</h2>
+            <p>रोज़ाना सबसे महत्वपूर्ण समाचार सीधे अपने ईमेल पर पाएं</p>
+            <div class="newsletter-form">
+                <input type="email" placeholder="आपका ईमेल दर्ज करें" id="emailInput">
+                <button onclick="subscribeNewsletter()">सदस्य बनें</button>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Sab News के बारे में</h3>
+                    <p>भारत का सबसे विश्वसनीय और तेज़ हिंदी समाचार पोर्टल</p>
+                </div>
+                <div class="footer-section">
+                    <h3>महत्वपूर्ण लिंक्स</h3>
+                    <ul>
+                        <li><a href="about.html">हमारे बारे में</a></li>
+                        <li><a href="contact.html">संपर्क करें</a></li>
+                        <li><a href="privacy.html">गोपनीयता नीति</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>हमें फॉलो करें</h3>
+                    <div class="social-links">
+                        <a href="#" class="social">📘 Facebook</a>
+                        <a href="#" class="social">🐦 Twitter</a>
+                        <a href="#" class="social">📷 Instagram</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Sab News. सर्वाधिकार सुरक्षित।</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
