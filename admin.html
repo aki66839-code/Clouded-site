@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>एडमिन पैनल - Sab News</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">📰 Sab News</div>
+            <div class="nav-links">
+                <a href="index.html">होम</a>
+                <a href="politics.html">राजनीति</a>
+                <a href="business.html">व्यापार</a>
+                <a href="sports.html">खेल</a>
+                <a href="entertainment.html">मनोरंजन</a>
+                <a href="science.html">विज्ञान</a>
+                <a href="health.html">स्वास्थ्य</a>
+                <a href="india.html">भारत</a>
+                <a href="world.html">दुनिया</a>
+            </div>
+            <div class="nav-right">
+                <button class="btn-theme" onclick="toggleTheme()">🌙</button>
+                <a href="index.html" class="btn-admin">होम</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1 style="margin: 2rem 0; color: var(--primary);">⚙️ एडमिन पैनल</h1>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin: 2rem 0;">
+            <!-- Stats -->
+            <div class="admin-card">
+                <div class="stat-icon">📰</div>
+                <div class="stat-value" id="totalNews">8</div>
+                <div class="stat-label">कुल समाचार</div>
+            </div>
+            <div class="admin-card">
+                <div class="stat-icon">👥</div>
+                <div class="stat-value" id="subscribers">0</div>
+                <div class="stat-label">सदस्य</div>
+            </div>
+            <div class="admin-card">
+                <div class="stat-icon">💬</div>
+                <div class="stat-value" id="totalComments">0</div>
+                <div class="stat-label">टिप्पणियां</div>
+            </div>
+            <div class="admin-card">
+                <div class="stat-icon">👁️</div>
+                <div class="stat-value" id="totalViews">0</div>
+                <div class="stat-label">कुल दृश्य</div>
+            </div>
+        </div>
+
+        <!-- Add News Form -->
+        <section class="admin-section">
+            <h2>📝 नया समाचार जोड़ें</h2>
+            <form class="admin-form" onsubmit="addNews(event)">
+                <div class="form-group">
+                    <label>शीर्षक</label>
+                    <input type="text" id="newsTitle" required>
+                </div>
+                <div class="form-group">
+                    <label>श्रेणी</label>
+                    <select id="newsCategory" required>
+                        <option>राजनीति</option>
+                        <option>व्यापार</option>
+                        <option>खेल</option>
+                        <option>मनोरंजन</option>
+                        <option>विज्ञान</option>
+                        <option>स्वास्थ्य</option>
+                        <option>भारत</option>
+                        <option>दुनिया</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>विवरण</label>
+                    <input type="text" id="newsDescription" required>
+                </div>
+                <div class="form-group">
+                    <label>पूरी सामग्री</label>
+                    <textarea id="newsContent" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>लेखक</label>
+                    <input type="text" id="newsAuthor" required>
+                </div>
+                <div class="form-group">
+                    <label>छवि URL</label>
+                    <input type="url" id="newsImage" value="https://via.placeholder.com/400x250?text=News">
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="newsTrending"> ट्रेंडिंग समाचार
+                    </label>
+                </div>
+                <button type="submit" class="btn-submit">समाचार जोड़ें</button>
+            </form>
+        </section>
+
+        <!-- News List -->
+        <section class="admin-section">
+            <h2>📋 सभी समाचार</h2>
+            <div class="news-table" id="newsTable">
+                <!-- News list will be loaded here -->
+            </div>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Sab News के बारे में</h3>
+                    <p>भारत का सबसे विश्वसनीय और तेज़ हिंदी समाचार पोर्टल</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Sab News. सर्वाधिकार सुरक्षित।</p>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        .admin-card {
+            background: linear-gradient(135deg, var(--primary) 0%, #ff8c42 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .admin-card:nth-child(2) {
+            background: linear-gradient(135deg, #004e89 0%, #0066b3 100%);
+        }
+
+        .admin-card:nth-child(3) {
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+        }
+
+        .admin-card:nth-child(4) {
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+        }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .admin-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .admin-section h2 {
+            border: none;
+            margin-bottom: 2rem;
+            padding: 0;
+        }
+
+        .admin-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 0.8rem;
+            border: 1px solid var(--border);
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            grid-column: 1 / -1;
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .btn-submit {
+            grid-column: 1 / -1;
+            padding: 1rem 2rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-submit:hover {
+            background: #ff5722;
+            transform: translateY(-2px);
+        }
+
+        .news-table {
+            overflow-x: auto;
+        }
+
+        .news-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 0.5fr;
+            gap: 1rem;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid var(--border);
+            background: var(--light);
+            margin-bottom: 0.5rem;
+            border-radius: 5px;
+        }
+
+        .news-item button {
+            background: #ff4444;
+            color: white;
+            border: none;
+            padding: 0.4rem 0.8rem;
+            border-radius: 3px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .news-item button:hover {
+            background: #cc0000;
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .admin-form {
+                grid-template-columns: 1fr;
+            }
+
+            .news-item {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+    <script>
+        function loadAdminStats() {
+            const news = getNews();
+            const subscribers = JSON.parse(localStorage.getItem('subscribers') || '[]');
+            let totalComments = 0;
+            let totalViews = 0;
+
+            news.forEach(n => {
+                const comments = JSON.parse(localStorage.getItem(`comments-${n.id}`) || '[]');
+                totalComments += comments.length;
+                totalViews += n.views;
+            });
+
+            document.getElementById('totalNews').textContent = news.length;
+            document.getElementById('subscribers').textContent = subscribers.length;
+            document.getElementById('totalComments').textContent = totalComments;
+            document.getElementById('totalViews').textContent = totalViews;
+
+            loadNewsList();
+        }
+
+        function loadNewsList() {
+            const news = getNews();
+            const table = document.getElementById('newsTable');
+
+            table.innerHTML = news.map(n => `
+                <div class="news-item">
+                    <span><strong>${n.title.substring(0, 30)}...</strong></span>
+                    <span>${n.category}</span>
+                    <span>${n.author}</span>
+                    <span>${n.date}</span>
+                    <button onclick="deleteNews(${n.id})">हटाएं</button>
+                </div>
+            `).join('');
+        }
+
+        function addNews(e) {
+            e.preventDefault();
+            const news = getNews();
+            const newId = Math.max(...news.map(n => n.id), 0) + 1;
+
+            const newNews = {
+                id: newId,
+                title: document.getElementById('newsTitle').value,
+                category: document.getElementById('newsCategory').value,
+                description: document.getElementById('newsDescription').value,
+                content: document.getElementById('newsContent').value,
+                author: document.getElementById('newsAuthor').value,
+                image: document.getElementById('newsImage').value,
+                date: new Date().toLocaleDateString('hi-IN'),
+                views: 0,
+                trending: document.getElementById('newsTrending').checked
+            };
+
+            news.push(newNews);
+            saveNews(news);
+
+            alert('समाचार सफलतापूर्वक जोड़ा गया!');
+            document.querySelector('.admin-form').reset();
+            loadAdminStats();
+        }
+
+        function deleteNews(id) {
+            if (confirm('क्या आप सुनिश्चित हैं?')) {
+                let news = getNews();
+                news = news.filter(n => n.id !== id);
+                saveNews(news);
+                loadAdminStats();
+                alert('समाचार हटा दिया गया!');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            loadTheme();
+            loadAdminStats();
+        });
+    </script>
+</body>
+</html>
