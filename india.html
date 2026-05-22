@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>भारत - Sab News</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">📰 Sab News</div>
+            <div class="nav-links">
+                <a href="index.html">होम</a>
+                <a href="politics.html">राजनीति</a>
+                <a href="business.html">व्यापार</a>
+                <a href="sports.html">खेल</a>
+                <a href="entertainment.html">मनोरंजन</a>
+                <a href="science.html">विज्ञान</a>
+                <a href="health.html">स्वास्थ्य</a>
+                <a href="india.html" class="active">भारत</a>
+                <a href="world.html">दुनिया</a>
+            </div>
+            <div class="nav-right">
+                <input type="text" placeholder="खोजें..." class="search-box" id="searchBox">
+                <button class="btn-theme" onclick="toggleTheme()">🌙</button>
+                <a href="admin.html" class="btn-admin">एडमिन</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1 style="margin: 2rem 0;">🇮🇳 भारत समाचार</h1>
+        <div class="news-grid" id="newsContainer">
+            <!-- News will be loaded here -->
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Sab News के बारे में</h3>
+                    <p>भारत का सबसे विश्वसनीय और तेज़ हिंदी समाचार पोर्टल</p>
+                </div>
+                <div class="footer-section">
+                    <h3>महत्वपूर्ण लिंक्स</h3>
+                    <ul>
+                        <li><a href="about.html">हमारे बारे में</a></li>
+                        <li><a href="contact.html">संपर्क करें</a></li>
+                        <li><a href="privacy.html">गोपनीयता नीति</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>हमें फॉलो करें</h3>
+                    <div class="social-links">
+                        <a href="#" class="social">📘 Facebook</a>
+                        <a href="#" class="social">🐦 Twitter</a>
+                        <a href="#" class="social">📷 Instagram</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Sab News. सर्वाधिकार सुरक्षित।</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            loadTheme();
+            const news = getNews();
+            const india = news.filter(n => n.category === 'भारत');
+            loadNewsCards('newsContainer', india);
+        });
+    </script>
+</body>
+</html>
